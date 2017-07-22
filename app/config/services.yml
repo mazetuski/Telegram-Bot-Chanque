@@ -1,0 +1,61 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    app.torpeHelper:
+        class: AppBundle\Services\TorpeHelper
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.huchaHelper:
+        class: AppBundle\Services\HuchaHelper
+        arguments: ['@doctrine.orm.entity_manager']
+    app.tiempoHelper:
+        class: AppBundle\Services\TiempoHelper
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.telegram.command.help:
+        class: BoShurik\TelegramBotBundle\Telegram\Command\HelpCommand
+        arguments:
+            - "@bo_shurik_telegram_bot.command_pool"
+        tags:
+            - { name: bo_shurik_telegram_bot.command }
+
+    app.telegram.command.hola:
+        class: AppBundle\Commands\HolaCommand
+        tags:
+            - { name: bo_shurik_telegram_bot.command }
+
+    app.telegram.command.torpe:
+        class: AppBundle\Commands\TorpeCommand
+        arguments:
+            - "@app.torpeHelper"
+        tags:
+            - { name: bo_shurik_telegram_bot.command }
+
+    app.telegram.command.hucha:
+        class: AppBundle\Commands\HuchaCommand
+        arguments:
+            - "@app.huchaHelper"
+        tags:
+            - { name: bo_shurik_telegram_bot.command }
+
+    app.telegram.command.tiempo:
+        class: AppBundle\Commands\TiempoCommand
+        arguments:
+            - "@app.tiempoHelper"
+        tags:
+            - { name: bo_shurik_telegram_bot.command }
+
+    bo_shurik_telegram_bot.command_listener:
+        class: AppBundle\EventListener\CommandListener
+        arguments:
+            - "@bo_shurik_telegram_bot.api"
+            - "@bo_shurik_telegram_bot.command_pool"
+        tags:
+            - { name: kernel.event_listener, event: bo_shurik_telegram_bot.update, method: onUpdate }
