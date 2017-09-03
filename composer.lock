@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4c42c3500f57889a901c9eb796786d8",
+    "content-hash": "727d9ab301947d295d8d3c72a5f7012d",
     "packages": [
         {
             "name": "boshurik/telegram-bot-bundle",
@@ -1238,6 +1238,52 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "juno_okyo/php-chatfuel-class",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/J2TeaM/php-chatfuel-class.git",
+                "reference": "ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/J2TeaM/php-chatfuel-class/zipball/ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23",
+                "reference": "ce0405a7fd698c7ff30b7ba1b1de187ec2dcea23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "juno_okyo\\": "src/juno_okyo/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Manh Tuan",
+                    "email": "junookyo@gmail.com",
+                    "homepage": "https://junookyo.blogspot.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP class to generate JSON output for your chatbot (build with Chatfuel)",
+            "homepage": "https://github.com/J2TeaM/php-chatfuel-class",
+            "keywords": [
+                "chatbot",
+                "chatfuel",
+                "facebook bot",
+                "json api",
+                "messenger bot"
+            ],
+            "time": "2017-03-10T05:54:23+00:00"
         },
         {
             "name": "monolog/monolog",
